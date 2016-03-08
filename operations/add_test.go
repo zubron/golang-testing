@@ -35,3 +35,23 @@ func TestAddPositiveNegative(t *testing.T) {
 		t.Errorf("Test failed. Expected: %d, Actual %d", expected, actual)
 	}
 }
+
+var addTests = []struct {
+	a, b     int // input
+	expected int // expected result
+}{
+	{1, 3, 4},
+	{0, 5, 5},
+	{-3, 3, 0},
+	{127, -31, 96},
+	{-13, -45, -58},
+}
+
+func TestAdd(t *testing.T) {
+	for _, testCase := range addTests {
+		actual := Add(testCase.a, testCase.b)
+		if actual != testCase.expected {
+			t.Errorf("Test failed. Expected: %d, Actual %d", testCase.expected, actual)
+		}
+	}
+}
